@@ -6,8 +6,8 @@ import getUsers, {app, db, getUserFromId, getRoundsForUser} from '../../firebase
 const LyricList = () => {
 
 //   getUsers(db).then( user => console.log(user) );
-// getUserFromId("dumbo").then( user => console.log( user.data()) );
-getRoundsForUser("dumbo");
+getUserFromId("dumbo").then( user => console.log( user.data()) );
+// getRoundsForUser("dumbo");
 
   return (
     <div className='lyrics'>
