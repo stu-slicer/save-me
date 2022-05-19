@@ -2,12 +2,22 @@ import React from 'react'
 import lyrics from '../../data/save-me.js';
 import LyricLine from '../LyricLine/LyricLine.jsx';
 import getUsers, {app, db, getUserFromId, getRoundsForUser} from '../../firebase';
+import {getUserInfo, saveUserInfo} from '../../save-oom-funcs';
 
 const LyricList = () => {
 
 //   getUsers(db).then( user => console.log(user) );
-getUserFromId("dumbo").then( user => console.log( user.data()) );
+// getUserFromId("dumbo").then( user => console.log( user.data()) );
 // getRoundsForUser("dumbo");
+
+  const processAndSaveUser = (userData) => {
+    console.log("Processing " + userData.id );
+    console.log(userData );
+    saveUserInfo( userData );
+  }
+
+  getUserInfo("1").then( user => console.log(user) );
+  getUserInfo("2").then( user => processAndSaveUser(user) );
 
   return (
     <div className='lyrics'>
