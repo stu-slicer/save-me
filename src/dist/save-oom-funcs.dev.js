@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getSwingPhonics = exports.getGameRounds = exports.saveUserInfo = exports.getUserInfo = void 0;
+exports.getSwingPhonics = exports.saveGameRound = exports.getGameRounds = exports.saveUserInfo = exports.getUserInfo = void 0;
 var ALICE_ID = "2";
 var BOB_ID = "3";
 var CAROL_ID = "4";
@@ -173,6 +173,25 @@ var getGameRounds = function getGameRounds(userId, gameId, level) {
   return Promise.resolve(rounds);
 };
 /**
+ * Saves a given GameRound.
+ * Can be any type of GameRound, for any game.
+ * @param {*} gameRound 
+ * @returns saved gameRound as a Promise.
+ */
+
+
+exports.getGameRounds = getGameRounds;
+
+var saveGameRound = function saveGameRound(gameRound) {
+  if (gameRound) {
+    console.log("Saving gameRound for game ".concat(gameRound.gameId, ", level ").concat(gameRound.level));
+  } else {
+    return Promise.reject(null);
+  }
+
+  return Promise.resolve(gameRound);
+};
+/**
  * Get the phonics for the given user for the Swing game.
  * Phonics are the codes only, sorted as they should be used.
  * @param {*} userId 
@@ -181,7 +200,7 @@ var getGameRounds = function getGameRounds(userId, gameId, level) {
  */
 
 
-exports.getGameRounds = getGameRounds;
+exports.saveGameRound = saveGameRound;
 
 var getSwingPhonics = function getSwingPhonics(userId, level) {
   var promise = getGameRounds(userId, GAME_SWING, level).then(function (rounds) {

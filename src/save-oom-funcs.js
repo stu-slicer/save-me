@@ -176,6 +176,24 @@ export const getGameRounds = (userId, gameId, level, latestFirst = false) => {
 }
 
 /**
+ * Saves a given GameRound.
+ * Can be any type of GameRound, for any game.
+ * @param {*} gameRound 
+ * @returns saved gameRound as a Promise.
+ */
+export const saveGameRound = (gameRound) => {
+    if( gameRound ) {
+        console.log( `Saving gameRound for game ${gameRound.gameId}, level ${gameRound.level}` );
+    } else {
+        return Promise.reject( null );
+    }
+
+    return Promise.resolve( gameRound );
+}
+
+
+
+/**
  * Get the phonics for the given user for the Swing game.
  * Phonics are the codes only, sorted as they should be used.
  * @param {*} userId 
